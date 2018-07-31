@@ -44,3 +44,11 @@ var invite = (NbPerson,time) => {
         }        
     }, 500);
 }
+
+var main = () => {
+    executePrompt().then((result) => {
+        invite(result.person,result.time);
+    })
+}
+
+main();
