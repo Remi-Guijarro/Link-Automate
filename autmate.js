@@ -21,3 +21,26 @@ var executePrompt = () => {
     })
 }
 
+
+
+var invite = (NbPerson,time) => {
+    var scrollLoop = setInterval(function () {
+        var connectArr = document.querySelectorAll("button[data-control-name='invite'");
+        if (connectArr.length >= NbPerson) {
+            clearInterval(scrollLoop);
+            var index = 0;
+            var connectLoop = setInterval(function () {
+                connectArr[index].click();
+                console.log(index);
+                index++;
+                if (index >= NbPerson) {
+                    clearInterval(connectLoop);
+                    alert("Done Connecting!");
+                }
+            }, time);
+        }
+        if(connectArr.length <= 0){
+            window.scrollTo(0, document.body.scrollHeight);
+        }        
+    }, 500);
+}
