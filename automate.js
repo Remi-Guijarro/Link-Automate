@@ -2,15 +2,23 @@ var executePrompt = () => {
     return new Promise((resolve, reject) => {
         var txt;
         var person = prompt("Please enter the number of person that you want to connect:", "20");
-        if (person == null || person == "" || person == undefined) {
-            person = prompt("Please enter the number of person that you want to connect:", "20");
+        if (person == null) {
+            alert('goodbye !');
+            return;
+        }
+        else if (person == "" || person == undefined) {
+            console.log(person);
+            executePrompt();
         } else {
             var time = prompt("Please enter the time in milisecond (1s = 1000 ms) each connection reqest will be executed every 'time' millisecond so we recommande you to put a high number to not be ban by linkedin :", "5000");
-            if (time == null || time == undefined || time == "") {
-                time = prompt("Please enter the time in milisecond (1s = 1000 ms) each connection reqest will be executed every 'time' millisecond so we recommande you to put a high number to not be ban by linkedin :", "5000");
+            if (time == null) {
+                alert('GoodBye ! ');
+                return;
+            } else if (time == undefined || time == "") {
+                executePrompt();
             } else if (time <= 0 || time < 3500) {
                 alert('the requested interval of time is not corrrect');
-                time = prompt("Please enter the time in milisecond (1s = 1000 ms) each connection reqest will be executed every 'time' millisecond so we recommande you to put a high number to not be ban by linkedin :", "5000");
+                executePrompt();
             } else {
                 result = {};
                 result.time = time;
@@ -66,7 +74,7 @@ var main = () => {
     executePrompt().then((result) => {
         console.log(result);
         if (localStorage.getItem("nbrequete") >= 10) {
-            alert('you have executed' + localStorage.getItem("nbrequete") + 'today, if you don\'t want to be ban by linkedin you may stop for today')
+            alert('you have executed  ' + localStorage.getItem("nbrequete") + ' request today, if you don\'t want to be ban by linkedin you may stop for today')
         } else {
             let actualNbRequest = localStorage.getItem('nbrequete');
             localStorage.setItem('nbrequete', actualNbRequest + result.person);
