@@ -1,7 +1,7 @@
 var executePrompt = () => {
     return new Promise((resolve, reject) => {
         var txt;
-        var person = prompt("Please enter the number of person that you want to connect:", "20");
+        var person = prompt("Please enter the quantity of persons that you want to invite:", "20");
         if (person == null) {
             alert('goodbye !');
             return;
@@ -10,7 +10,7 @@ var executePrompt = () => {
             console.log(person);
             executePrompt();
         } else {
-            var time = prompt("Please enter the time in milisecond (1s = 1000 ms) each connection reqest will be executed every 'time' millisecond so we recommande you to put a high number to not be ban by linkedin :", "5000");
+            var time = prompt("Please enter the time in milisecond (1s = 1000 ms) each connection reqest will be executed every 'time that you have set' so we recommande you to put a number higher than 2000, to not be ban by linkedin :", "5000");
             if (time == null) {
                 alert('GoodBye ! ');
                 return;
@@ -73,7 +73,7 @@ var main = () => {
     }
     executePrompt().then((result) => {
         console.log(result);
-        if (localStorage.getItem("nbrequete") >= 10) {
+        if (localStorage.getItem("nbrequete") >= 500) {
             alert('you have executed  ' + localStorage.getItem("nbrequete") + ' request today, if you don\'t want to be ban by linkedin you may stop for today')
         } else {
             let actualNbRequest = localStorage.getItem('nbrequete');
