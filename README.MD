@@ -1,7 +1,7 @@
 
 ## Link-Automate
 
-Automation script for connection requests on linkedin
+Automation script for connections requests on linkedin
 
 ## Use
 Open the developper console and past the code.
